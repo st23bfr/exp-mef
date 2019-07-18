@@ -1,0 +1,10 @@
+.mini {
+	list-style-type: none;
+	padding: 10px 0px;
+	display: flex;
+	background-color: #293133;
+}
+.mini li {
+	text-align: center;
+	flex-basis: 180px;
+}

@@ -1,0 +1,15 @@
+.TextWithImage {
+	display: flex;
+	flex-flow: row wrap;
+	min-height: 400px;
+	font-size: 16px;
+	text-indent: 50px;
+}
+
+.TextWithImage img {
+	float:right;
+}
+
+.TextWithImage-header {
+	text-indent: 0px;
+}

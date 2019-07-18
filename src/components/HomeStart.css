@@ -1,0 +1,11 @@
+.HomeStart {
+	background-image: url("../img/slide1.png");
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-size: cover;
+	min-height: 500px;
+	font-size: 22px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+}

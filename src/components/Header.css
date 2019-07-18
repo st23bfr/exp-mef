@@ -1,0 +1,13 @@
+header {
+	background-color: black;
+	color: white;
+	margin: 0;
+}
+
+header > h1 {
+	min-height: 100px;
+	margin: 0px;
+	padding: 20px;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 52px;
+}
