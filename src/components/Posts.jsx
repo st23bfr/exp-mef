@@ -74,20 +74,22 @@ class Posts extends React.Component {
 	}
 }
 
-class Topic extends React.Component {
-	render() {
-		let topic = this.props.match.params.topicId
-		return(
+function Topic () {
+	let topic = this.props.match.params.topicId
+	return(
 		<div className="projParts">
-			<TextWithImage header={postsData[topic].header} text={postsData[topic].text+postsData[topic].text} 
-			img={{src:postsData[topic].img, width:300, height:300}}/>
+			<TextWithImage
+				header={postsData[topic].header}
+				text={postsData[topic].text+postsData[topic].text} 
+				img={{src:postsData[topic].img, width:300, height:300}}
+			/>
 			<Link to='/posts'>
-						<div id="backButton">Назад</div>
-					</Link>
+				<div id="backButton">Назад</div>
+			</Link>
 		</div>
-		)
-	}
+	);
 }
+
 
 class PostCard extends React.Component {
 	render() {
