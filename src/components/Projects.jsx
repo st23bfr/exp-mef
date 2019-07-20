@@ -1,90 +1,97 @@
 import React from 'react';
-import './Projects.css';
-import TextWithImage from './TextWithImage';
-import img1 from './../img/proj1.jpg'
-import img2 from './../img/proj2.jpg'
-import img3 from './../img/proj3.jpg'
-import img4 from './../img/proj4.jpg'
-import img5 from './../img/proj5.jpg'
-import img6 from './../img/proj6.jpg'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom';
 
-class Projects extends React.Component {
-	render() {
-		return(
+import TextWithImage from './TextWithImage';
+
+import './Projects.css';
+import img1 from './../img/proj1.jpg';
+import img2 from './../img/proj2.jpg';
+import img3 from './../img/proj3.jpg';
+import img4 from './../img/proj4.jpg';
+import img5 from './../img/proj5.jpg';
+import img6 from './../img/proj6.jpg';
+
+function Projects ({ match }) {
+	return (
 		<div>
-			<Route  path={`${this.props.match.url}/:topicId`} component={Topic}/>
-			<Route exact path={this.props.match.url} render={() => (
-				<div className="projects">
-					<ProjectCard
-						id="project-card1"
-						text="Тема проекта"
-						img={projData.proj1.img}
-						caption="Подпись к картинке"
-						match={this.props.match}
-						link="/proj1"
-					/>
-					<ProjectCard
-						id="project-card2"
-						text="Тема проекта"
-						img={projData.proj2.img}
-						caption="Подпись к картинке"
-						match={this.props.match}
-						link="/proj2"
-					/>
-					<ProjectCard
-						id="project-card3"
-						text="Тема проекта"
-						img={projData.proj3.img}
-						caption="Подпись к картинке"
-						match={this.props.match}
-						link="/proj3"
-					/>
-					<ProjectCard
-						id="project-card4"
-						text="Тема проекта"
-						img={projData.proj4.img}
-						caption="Подпись к картинке"
-						match={this.props.match}
-						link="/proj4"
-					/>
-					<ProjectCard
-						id="project-card5"
-						text="Тема проекта"
-						img={projData.proj5.img}
-						caption="Подпись к картинке"
-						match={this.props.match}
-						link="/proj5"
-					/>
-					<ProjectCard
-						id="project-card6"
-						text="Тема проекта"
-						img={projData.proj6.img}
-						caption="Подпись к картинке"
-						match={this.props.match}
-						link="/proj6"
-					/>
-				</div>
-			)}/>
+			<Route
+				path={`${match.url}/:topicId`}
+				component={Topic}
+			/>
+			<Route
+				exact
+				path={match.url}
+				render={() => (
+					<div className="projects">
+						<ProjectCard
+							id="project-card1"
+							text="Тема проекта"
+							img={projData.proj1.img}
+							caption="Подпись к картинке"
+							match={match}
+							link="/proj1"
+						/>
+						<ProjectCard
+							id="project-card2"
+							text="Тема проекта"
+							img={projData.proj2.img}
+							caption="Подпись к картинке"
+							match={match}
+							link="/proj2"
+						/>
+						<ProjectCard
+							id="project-card3"
+							text="Тема проекта"
+							img={projData.proj3.img}
+							caption="Подпись к картинке"
+							match={match}
+							link="/proj3"
+						/>
+						<ProjectCard
+							id="project-card4"
+							text="Тема проекта"
+							img={projData.proj4.img}
+							caption="Подпись к картинке"
+							match={match}
+							link="/proj4"
+						/>
+						<ProjectCard
+							id="project-card5"
+							text="Тема проекта"
+							img={projData.proj5.img}
+							caption="Подпись к картинке"
+							match={match}
+							link="/proj5"
+						/>
+						<ProjectCard
+							id="project-card6"
+							text="Тема проекта"
+							img={projData.proj6.img}
+							caption="Подпись к картинке"
+							match={match}
+							link="/proj6"
+						/>
+					</div>
+				)}
+			/>
 		</div>
-		)
-	}
+	);
 }
 
-class Topic extends React.Component {
-	render() {
-		let topic = this.props.match.params.topicId
-		return(
+function Topic ({ match }) {
+	const topic = match.params.topicId
+	return (
 		<div className="projParts">
-			{/*<h3>{topic}</h3>*/}
-			<TextWithImage header={projData[topic].name} text={projData[topic].text+projData[topic].text} 
-			img={{src:projData[topic].img, width:300, height:300}}/>
+			<TextWithImage
+				header={projData[topic].name}
+				text={projData[topic].text+projData[topic].text} 
+				img={{src:projData[topic].img, width:300, height:300}}
+			/>
 			<Link to='/projects'>
-            <div id="backButton">Назад</div>
-        	</Link>
+				<div id="backButton">Назад</div>
+			</Link>
 		</div>
-		)
-	}
+	);
 }
 
 class ProjectCard extends React.Component {
@@ -101,24 +108,40 @@ class ProjectCard extends React.Component {
 	}
 
 	render() {
-		let act = this.state.activate;
-		return(
-		<div id={this.props.id} className="ProjectCard">
+		const act = this.state.activate;
+		return (
+		<div
+			id={this.props.id}
+			className="ProjectCard"
+		>
 			<div 
 			style={act? {display: "block"} : {display: "none"}} 
-			className="modal">
+			className="modal"
+			>
 				<span onClick={this.handleClick} class="close">&times;</span>
-				<img className="modal-content" src={this.props.img} alt={this.props.caption}/>
+				<img
+					className="modal-content"
+					src={this.props.img}
+					alt={this.props.caption}
+				/>
 				<div id="caption">{this.props.caption}</div>
 			</div>
 
-				<Link to={`${this.props.match.url}${this.props.link}`}>
-				<div id="projButton1" className="projectButton">
-					<span className="glyphicon glyphicon-file"></span>
-				</div></Link>
+			<Link to={`${this.props.match.url}${this.props.link}`}>
+				<div
+					id="projButton1"
+					className="projectButton"
+				>
+					<span className="glyphicon glyphicon-file" />
+				</div>
+			</Link>
 
-			<div onClick={this.handleClick} id="projButton2" className="projectButton">
-				<span className="glyphicon glyphicon-search"></span>
+			<div
+				onClick={this.handleClick}
+				id="projButton2"
+				className="projectButton"
+			>
+				<span className="glyphicon glyphicon-search" />
 			</div>
 			
 			<div className="overlayText">{this.props.text}</div>
@@ -160,4 +183,4 @@ let projData = {
 	}
 }
 
-export default Projects
+export default Projects;
